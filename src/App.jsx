@@ -14,6 +14,7 @@ import './index.css';
 
 function App() {
   const [entered, setEntered] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const audioRef = useRef(null);
 
   useEffect(() => {
@@ -24,6 +25,8 @@ function App() {
   const handleStartAudio = (audio) => {
     audioRef.current = audio;
   };
+
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
     <>
@@ -43,17 +46,30 @@ function App() {
 
       <header className="navbar">
         <div className="navbar-inner">
-          <a href="#home" className="navbar-logo">
+          <a href="#home" className="navbar-logo" onClick={closeMenu}>
             MS<span className="text-gradient">.</span>
           </a>
-          <nav>
+
+          <button
+            type="button"
+            className="mobile-nav-toggle"
+            aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={isMenuOpen}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+
+          <nav className={`navbar-menu${isMenuOpen ? ' open' : ''}`}>
             <ul className="navbar-links">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#skills">Skills</a></li>
-              <li><a href="#education">Education</a></li>
-              <li><a href="#internships">Experience</a></li>
-              <li><a href="#projects">Projects</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="#home" onClick={closeMenu}>Home</a></li>
+              <li><a href="#skills" onClick={closeMenu}>Skills</a></li>
+              <li><a href="#education" onClick={closeMenu}>Education</a></li>
+              <li><a href="#internships" onClick={closeMenu}>Experience</a></li>
+              <li><a href="#projects" onClick={closeMenu}>Projects</a></li>
+              <li><a href="#contact" onClick={closeMenu}>Contact</a></li>
             </ul>
           </nav>
         </div>

@@ -101,6 +101,13 @@ const HeroSection = () => {
               <a href="#contact" className="btn-secondary">
                 Get In Touch
               </a>
+              <a
+                href="/resume/profile.pdf"
+                download="Mohammad_Saif_Resume.pdf"
+                className="btn-resume"
+              >
+                <FaDownload size={13} /> Resume
+              </a>
             </motion.div>
 
             <motion.div
